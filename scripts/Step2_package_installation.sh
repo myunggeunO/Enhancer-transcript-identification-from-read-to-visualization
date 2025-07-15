@@ -20,11 +20,7 @@
 
 set -e
 
-# 1. Activate conda environment
-source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate bioinformatics_env
-
-# 2. Install bioinformatics tools
+#1. Install bioinformatics tools
 mamba install -c bioconda -c conda-forge bowtie2 -y && echo "!bowtie2 installed"
 mamba install -c bioconda -c conda-forge bedtools -y && echo "!bedtools installed"
 mamba install -c bioconda -c conda-forge cutadapt -y && echo "!cutadapt installed"
@@ -35,11 +31,11 @@ mamba install -c bioconda -c conda-forge samtools -y && echo "!samtools installe
 mamba install -c bioconda -c conda-forge sambamba -y && echo "!sambamba installed"
 mamba install -c bioconda -c conda-forge deeptools -y && echo "!deeptools installed"
 
-# 3. Install R packages
+#2. Install R packages
 mamba install -c conda-forge r-tidyverse -y && echo "!r-tidyverse installed"
 mamba install -c conda-forge r-cowplot -y && echo "!r-cowplot installed"
 
-# 4. Install HOMER
+#3. Install HOMER
 echo "!Installing HOMER..."
 mkdir -p ~/homer && cd ~/homer
 wget -q http://homer.ucsd.edu/homer/configureHomer.pl
