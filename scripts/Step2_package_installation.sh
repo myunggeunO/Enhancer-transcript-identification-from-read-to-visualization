@@ -22,28 +22,28 @@
 
 set -e
 
-#1. Install bioinformatics tools
-mamba install -c bioconda -c conda-forge sra-tools && echo "!sra-tools (fasterq-dump, prefetch) installed"
-mamba install -c conda-forge pigz && echo "!pigz installed"
-mamba install -c bioconda -c conda-forge bowtie2 -y && echo "!bowtie2 installed"
-mamba install -c bioconda -c conda-forge bedtools -y && echo "!bedtools installed"
-mamba install -c bioconda -c conda-forge cutadapt -y && echo "!cutadapt installed"
-mamba install -c bioconda -c conda-forge fastqc -y && echo "!fastqc installed"
-mamba install -c bioconda -c conda-forge macs3 -y && echo "!macs3 installed"
-mamba install -c bioconda -c conda-forge subread -y && echo "!featureCounts (subread) installed"
-mamba install -c bioconda -c conda-forge samtools -y && echo "!samtools installed"
-mamba install -c bioconda -c conda-forge sambamba -y && echo "!sambamba installed"
-mamba install -c bioconda -c conda-forge deeptools -y && echo "!deeptools installed"
+# 1. Install bioinformatics tools
+mamba install -c bioconda -c conda-forge sra-tools && echo "sra-tools (fasterq-dump, prefetch) installed"
+mamba install -c conda-forge pigz && echo "pigz installed"
+mamba install -c bioconda -c conda-forge bowtie2 -y && echo "bowtie2 installed"
+mamba install -c bioconda -c conda-forge bedtools -y && echo "bedtools installed"
+mamba install -c bioconda -c conda-forge cutadapt -y && echo "cutadapt installed"
+mamba install -c bioconda -c conda-forge fastqc -y && echo "fastqc installed"
+mamba install -c bioconda -c conda-forge macs3 -y && echo "macs3 installed"
+mamba install -c bioconda -c conda-forge subread -y && echo "featureCounts (subread) installed"
+mamba install -c bioconda -c conda-forge samtools -y && echo "samtools installed"
+mamba install -c bioconda -c conda-forge sambamba -y && echo "sambamba installed"
+mamba install -c bioconda -c conda-forge deeptools -y && echo "deeptools installed"
 
-#2. Install R packages
-mamba install -c conda-forge r-tidyverse -y && echo "!r-tidyverse installed"
-mamba install -c conda-forge r-cowplot -y && echo "!r-cowplot installed"
+# 2. Install R packages
+mamba install -c conda-forge r-tidyverse -y && echo "r-tidyverse installed"
+mamba install -c conda-forge r-cowplot -y && echo "r-cowplot installed"
 
-#3. Install HOMER
+# 3. Install HOMER
 echo "!Installing HOMER..."
 mkdir -p ~/homer && cd ~/homer
 wget -q http://homer.ucsd.edu/homer/configureHomer.pl
-perl configureHomer.pl -install && echo "!HOMER installed"
+perl configureHomer.pl -install && echo "HOMER installed"
 
-echo ""
-echo "!All packages installed successfully in 'bioinformatics_env'"
+echo
+echo "All packages installed successfully in 'bioinformatics_env'"
