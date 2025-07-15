@@ -25,6 +25,7 @@ set -e
 
 # 1. Install bioinformatics tools
 mamba install -c bioconda -c conda-forge sra-tools && echo "sra-tools (fasterq-dump, prefetch) installed"
+mamba install -c bioconda -c conda-forge trim-galore && echo "trim-galore installed"
 mamba install -c conda-forge pigz && echo "pigz installed"
 mamba install -c bioconda -c conda-forge bowtie2 -y && echo "bowtie2 installed"
 mamba install -c bioconda -c conda-forge bedtools -y && echo "bedtools installed"
