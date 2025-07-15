@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Bioinformatics tools to be installed:
+# - sra_toolkit
 # - pigz
 # - bowtie2
 # - bedtools
@@ -22,7 +23,8 @@
 set -e
 
 #1. Install bioinformatics tools
-mamba install -c conda-forge pigz
+mamba install -c bioconda -c conda-forge sra-tools && echo "!sra-tools (fasterq-dump, prefetch) installed"
+mamba install -c conda-forge pigz && echo "!pigz installed"
 mamba install -c bioconda -c conda-forge bowtie2 -y && echo "!bowtie2 installed"
 mamba install -c bioconda -c conda-forge bedtools -y && echo "!bedtools installed"
 mamba install -c bioconda -c conda-forge cutadapt -y && echo "!cutadapt installed"
