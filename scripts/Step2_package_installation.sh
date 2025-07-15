@@ -2,6 +2,7 @@
 
 # Bioinformatics tools to be installed:
 # - sra_toolkit
+# - trim-galore
 # - pigz
 # - bowtie2
 # - bedtools
@@ -12,11 +13,11 @@
 # - samtools
 # - sambamba
 # - deeptools
-#
+
 # R packages:
 # - r-tidyverse
 # - r-cowplot
-#
+
 # Other:
 # - HOMER
 
