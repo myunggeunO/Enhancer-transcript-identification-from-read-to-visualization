@@ -2,7 +2,7 @@
 set -e
 
 # 1. Set number of threads
-THREADS=30
+THREADS=5
 
 # 2. GRO-seq trimming
 find MATERIAL/GRO -type d -name "00.Rawdata" | while read raw_dir; do
