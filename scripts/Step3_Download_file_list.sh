@@ -2,7 +2,7 @@
 set -e
 
 # 1. Set number of threads for fasterq-dump and pigz
-THREADS=8
+THREADS=5
 
 # 2. Create directory structure
 mkdir -p MATERIAL/ATAC/{rep1/00.Rawdata,rep2/00.Rawdata}
