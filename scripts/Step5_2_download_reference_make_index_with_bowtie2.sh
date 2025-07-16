@@ -2,7 +2,7 @@
 set -e
 
 # Set the number of threads
-THREADS=7
+THREADS=5
 
 # 1. Create reference index directory
 mkdir -p reference_index
