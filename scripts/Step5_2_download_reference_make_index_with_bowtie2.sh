@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Number of threads to use
+# Set the number of threads
 THREADS=7
 
 # 1. Create reference index directory
@@ -18,4 +18,4 @@ pigz -p "$THREADS" -d mm10.fa.gz
 bowtie2-build mm10.fa mm10
 
 # 5. Print completion message
-echo "Bowtie2 index built from UCSC mm10.fa in $(pwd)"
+echo "Bowtie2 index built from UCSC mm10.fa"
