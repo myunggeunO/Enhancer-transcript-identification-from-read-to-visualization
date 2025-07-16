@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-# 1. Set number of threads
+# Set number of threads
 THREADS=5
 
-# 2. GRO-seq trimming
+# 1. GRO-seq trimming
 find MATERIAL/GRO -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -32,7 +32,7 @@ find MATERIAL/GRO -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
-# 3. ATAC trimming
+# 2. ATAC trimming
 find MATERIAL/ATAC -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -45,7 +45,7 @@ find MATERIAL/ATAC -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
-# 4. H3K27ac trimming
+# 3. H3K27ac trimming
 find MATERIAL/H3K27ac -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -58,7 +58,7 @@ find MATERIAL/H3K27ac -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
-# 5. H3K4me1 trimming
+# 4. H3K4me1 trimming
 find MATERIAL/H3K4me1 -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
