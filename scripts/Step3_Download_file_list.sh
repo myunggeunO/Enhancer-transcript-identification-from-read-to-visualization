@@ -1,16 +1,16 @@
 #!/bin/bash
 set -e
 
-# 1. Set number of threads for fasterq-dump and pigz
+# Set number of threads
 THREADS=5
 
-# 2. Create directory structure
+# 1. Create directory structure
 mkdir -p MATERIAL/ATAC/{rep1/00.Rawdata,rep2/00.Rawdata}
 mkdir -p MATERIAL/H3K27ac/{trep1/00.Rawdata,trep2/00.Rawdata,input/trep1/00.Rawdata,input/trep2/00.Rawdata}
 mkdir -p MATERIAL/H3K4me1/{rep1/00.Rawdata,rep2/00.Rawdata,input/rep1/00.Rawdata,input/rep2/00.Rawdata}
 mkdir -p MATERIAL/GRO/rep1/00.Rawdata
 
-# 3. Define sample list
+# 2. Define sample list
 sample_list=$(cat <<EOF
 ES_H3K27ac_trep1	SRR7895919
 ES_H3K27ac_trep2	SRR7895920
@@ -26,7 +26,7 @@ ES_GRO_rep1	SRR5655667
 EOF
 )
 
-# 4. Process each sample
+# 3. Process each sample
 echo "$sample_list" | while IFS=$'\t' read -r name srr; do
     echo "Processing $srr ($name)"
 
