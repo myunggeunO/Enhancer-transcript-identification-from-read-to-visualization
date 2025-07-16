@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Set the number of threads
+# Set number of threads
 THREADS=5
 
 # 1. Create reference index directory
