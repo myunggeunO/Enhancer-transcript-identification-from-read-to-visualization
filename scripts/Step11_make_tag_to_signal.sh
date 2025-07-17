@@ -37,7 +37,7 @@ tagdir="MATERIAL/H3K27ac/tmerge/03.TagDir/H3K27ac"
 
     outdir="MATERIAL/H3K27ac/tmerge/04.bigwig"
     mkdir -p "$outdir"
-    makeUCSCfile "$tagdir" -bigWig "$CHROMSIZES" -c "$input_tagdir" -pseudo 1 -o "$outdir/H3K27ac.bw"
+    makeUCSCfile "$tagdir" -bigWig "$CHROMSIZES" -i "$input_tagdir" -pseudo 1 -o "$outdir/H3K27ac.bw"
 } || echo "[WARNING] BAM not found for H3K27ac ($bam)"
 
 # 4. ATAC
@@ -73,7 +73,7 @@ tagdir="MATERIAL/H3K4me1/merge/03.TagDir/H3K4me1"
 
     outdir="MATERIAL/H3K4me1/merge/04.bigwig"
     mkdir -p "$outdir"
-    makeUCSCfile "$tagdir" -bigWig "$CHROMSIZES" -c "$input_tagdir" -pseudo 1 -o "$outdir/H3K4me1.bw"
+    makeUCSCfile "$tagdir" -bigWig "$CHROMSIZES" -i "$input_tagdir" -pseudo 1 -o "$outdir/H3K4me1.bw"
 } || echo "[WARNING] BAM not found for H3K4me1 ($bam)"
 
 echo ""
