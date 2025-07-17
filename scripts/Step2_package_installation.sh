@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Bioinformatics tools to be installed:
-# - sra_toolkit
+# - sra_tools
 # - trim-galore
 # - pigz
 # - bowtie2
