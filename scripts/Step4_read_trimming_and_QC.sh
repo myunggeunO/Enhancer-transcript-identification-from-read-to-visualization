@@ -4,7 +4,17 @@ set -e
 # Set number of threads
 THREADS=5
 
-# 1. GRO-seq trimming
+# 1. Pre-trimming FastQC for all raw FASTQ files
+echo "Performing initial FastQC on raw FASTQ files"
+
+find MATERIAL -type f -path "*/00.Rawdata/*.fastq.gz" | while read fq; do
+    echo "Running FastQC on $fq"
+    fastqc -t $THREADS "$fq"
+done
+
+echo "Initial FastQC completed. Proceeding to trimming steps"
+
+# 2. GRO-seq trimming
 find MATERIAL/GRO -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -32,7 +42,7 @@ find MATERIAL/GRO -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
-# 2. ATAC trimming
+# 3. ATAC trimming
 find MATERIAL/ATAC -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -45,7 +55,7 @@ find MATERIAL/ATAC -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
-# 3. H3K27ac trimming
+# 4. H3K27ac trimming
 find MATERIAL/H3K27ac -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -58,7 +68,7 @@ find MATERIAL/H3K27ac -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
-# 4. H3K4me1 trimming
+# 5. H3K4me1 trimming
 find MATERIAL/H3K4me1 -type d -name "00.Rawdata" | while read raw_dir; do
     clean_dir="$(dirname "$raw_dir")/01.Clean"
     mkdir -p "$clean_dir"
@@ -70,4 +80,5 @@ find MATERIAL/H3K4me1 -type d -name "00.Rawdata" | while read raw_dir; do
     done
 done
 
+echo ""
 echo "All trimming completed successfully."
