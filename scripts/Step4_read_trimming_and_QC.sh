@@ -21,23 +21,21 @@ find MATERIAL/GRO -type d -name "00.Rawdata" | while read raw_dir; do
 
     for fq in "$raw_dir"/*.fastq.gz; do
         base=$(basename "$fq" .fastq.gz)
-        echo "GRO: Trimming $base"
+        echo "GRO: trimming $base"
 
-        # Step 1: adapter trimming (Trim Galore)
+        # 2.1. adapter trimming (Trim Galore)
         trim_galore -j "$THREADS" --nextseq 20 --length 20 --fastqc \
             -o "$clean_dir" "$fq"
-
-        # Expect trimmed output name
+            
+        # 2.2. polyA trimming (Cutadapt)
         trimmed_fq="${clean_dir}/${base}_trimmed.fq.gz"
-
-        # Step 2: polyA trimming (Cutadapt)
         cutadapt -j "$THREADS" -a "A{15}" -m 20 \
             -o "${clean_dir}/${base}_trimmed_polyA.fq.gz" "$trimmed_fq"
 
-        # Final QC
-        fastqc "${clean_dir}/${base}_trimmed_polyA.fq.gz"
+        # 2.3. Final QC
+        fastqc -t $THREADS "${clean_dir}/${base}_trimmed_polyA.fq.gz"
 
-        # Remove intermediate file
+        # 2.4. Remove intermediate file
         rm -f "$trimmed_fq"
     done
 done
@@ -50,7 +48,7 @@ find MATERIAL/ATAC -type d -name "00.Rawdata" | while read raw_dir; do
     for r1 in "$raw_dir"/*_1.fastq.gz; do
         base=$(basename "$r1" _1.fastq.gz)
         r2="${raw_dir}/${base}_2.fastq.gz"
-        echo "ATAC: Trimming $base"
+        echo "ATAC: trimming $base"
         trim_galore -j "$THREADS" --paired --nextera --fastqc -o "$clean_dir" "$r1" "$r2"
     done
 done
@@ -63,7 +61,7 @@ find MATERIAL/H3K27ac -type d -name "00.Rawdata" | while read raw_dir; do
     for r1 in "$raw_dir"/*_1.fastq.gz; do
         base=$(basename "$r1" _1.fastq.gz)
         r2="${raw_dir}/${base}_2.fastq.gz"
-        echo "H3K27ac: Trimming $base"
+        echo "H3K27ac: trimming $base"
         trim_galore -j "$THREADS" --paired --fastqc -o "$clean_dir" "$r1" "$r2"
     done
 done
@@ -75,7 +73,7 @@ find MATERIAL/H3K4me1 -type d -name "00.Rawdata" | while read raw_dir; do
 
     for fq in "$raw_dir"/*.fastq.gz; do
         base=$(basename "$fq" .fastq.gz)
-        echo "H3K4me1: Trimming $base"
+        echo "H3K4me1: trimming $base"
         trim_galore -j "$THREADS" --fastqc -o "$clean_dir" "$fq"
     done
 done
