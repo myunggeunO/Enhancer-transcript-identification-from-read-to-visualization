@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-THREADS=16
+THREADS=5
 
 # 1. Run fixmate for ATAC-seq rep1 and rep2
 echo "Run fixmate for ATAC-seq rep1 and rep2"
@@ -42,8 +42,8 @@ find MATERIAL/ATAC/rep{1,2}/02.Align -type f -name "*_filtered.bam" | while read
     chrM_removed_bam="${align_dir}/${base}_noM.bam"
     samtools view -@ "$THREADS" -b "$dedup_bam" $(cat "$keep_chroms") > "$chrM_removed_bam"
 
-    # 4. Run final coordinate sort
-    echo "Run final coordinate sort"
+    # 4. Run final coordinate sorting
+    echo "Run final coordinate sorting"
     final_clean_bam="${chrM_removed_bam%.bam}_sorted.bam"
     sambamba sort -t "$THREADS" -o "$final_clean_bam" "$chrM_removed_bam"
 
