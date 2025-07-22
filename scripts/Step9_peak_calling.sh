@@ -12,7 +12,6 @@ mkdir -p "$outdir"
 
 macs3 callpeak -t "$signal_bam" -c "$input_bam" -f BAMPE -g $GENOME --broad -n "$mark" --outdir "$outdir"
 
-
 # 2. ATAC-seq (rep1 + rep2, BAMPE, narrow)
 echo "Call peaks for ATAC"
 mark="ATAC"
@@ -21,10 +20,7 @@ bam2="MATERIAL/$mark/rep2/02.Align/SRR23648610_noM_sorted.bam"
 outdir="MATERIAL/$mark/peak_calling"
 mkdir -p "$outdir"
 
-macs3 callpeak -t "$bam1" "$bam2" -f BAMPE -g $GENOME \
-  --nomodel --shift -100 --extsize 200 -q 0.01 \
-  -n "$mark" --outdir "$outdir"
-
+macs3 callpeak -t "$bam1" "$bam2" -f BAMPE -g $GENOME --nomodel --shift -100 --extsize 200 -q 0.01 -n "$mark" --outdir "$outdir"
 
 # 3. H3K4me1 (rep1 and rep2 separately, BAMPE, broad)
 for rep in rep1 rep2; do
@@ -41,7 +37,6 @@ for rep in rep1 rep2; do
   fi
 done
 
-
 # 4. Identification of H3K4me1 overlapped broadpeak
 mark="H3K4me1"
 peak_dir="MATERIAL/$mark/peak_calling"
@@ -53,9 +48,9 @@ output_peak="$overlap_dir/${mark}_overlapped_peaks.broadpeak"
 mkdir -p "$overlap_dir"
 
 if [[ -f "$rep1_peak" && -f "$rep2_peak" ]]; then
-  echo "Finding overlapping peaks between rep1 and rep2"
+  echo "Find overlapping peaks between rep1 and rep2"
   bedtools intersect -a "$rep1_peak" -b "$rep2_peak" > "$output_peak"
-  echo "Overlapping peaks saved to: $output_peak"
+  echo "Overlapped peaks saved to: $output_peak"
 else
   echo "[ERROR] One or both peak files are missing:"
   [[ ! -f "$rep1_peak" ]] && echo " - Missing: $rep1_peak"
