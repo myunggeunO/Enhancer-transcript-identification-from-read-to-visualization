@@ -51,21 +51,21 @@ echo "$sample_list" | while IFS=$'\t' read -r name srr; do
     fi
     cd "$target_dir"
 
-    echo "Downloading $srr with prefetch..."
+    echo "Downloading $srr with prefetch"
     prefetch --output-directory . "$srr"
     sra_path="$PWD/$srr/$srr.sra"
 
-    echo "Converting $srr to FASTQ..."
+    echo "Converting $srr to FASTQ"
     if [[ "$category" == "ATAC" || "$category" == "H3K27ac" ]]; then
         fasterq-dump --split-files --threads $THREADS "$sra_path"
     else
         fasterq-dump --threads $THREADS "$sra_path"
     fi
 
-    echo "Compressing FASTQ with pigz..."
+    echo "Compressing FASTQ with pigz"
     pigz -p $THREADS *.fastq
 
-    echo "Cleaning up temporary files..."
+    echo "Cleaning up temporary files"
     rm -rf "$srr"
 
     echo "$srr done."
