@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-THREADS=16
+THREADS=5
 
 # 1. Sort all bam of technical replicates
 find MATERIAL/H3K27ac -type d -name "02.Align" | while read align_dir; do
