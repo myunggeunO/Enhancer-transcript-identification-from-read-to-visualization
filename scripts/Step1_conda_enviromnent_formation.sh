@@ -20,7 +20,7 @@ conda update -n base -c defaults conda -y
 conda install -n base -c conda-forge mamba -y
 
 # 6. Create a virtual environment named "enhancer-env"
-mamba create -n enhancer-env python=3.9 numpy pandas -y
+mamba create -n enhancer-env python=3.9 numpy pandas r-base -y
 
 # 7. Launch a new shell with the "enhancer-env" environment activated
 echo "Environment 'enhancer-env' created. Opening new shell with it activated."
