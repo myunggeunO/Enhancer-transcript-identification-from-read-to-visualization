@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
-
-THREADS=32
+THREADS=5
 ref_index="reference_index/mm10"
 
 # 1. Run alignment for H3K27ac (paired-end)
