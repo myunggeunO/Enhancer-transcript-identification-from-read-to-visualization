@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-
 THREADS=16
 
 # 1. Sort all bam of technical replicates
