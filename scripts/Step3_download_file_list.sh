@@ -45,17 +45,14 @@ echo "$sample_list" | while IFS=$'\t' read -r name srr; do
     # Final path to 00.Rawdata
     target_dir="MATERIAL/$category/$rep_folder/00.Rawdata"
     echo "Target directory: $target_dir"
-
     if [[ ! -d "$target_dir" ]]; then
         echo "ERROR: Directory $target_dir does not exist"
         exit 1
     fi
-
     cd "$target_dir"
 
     echo "Downloading $srr with prefetch..."
     prefetch --output-directory . "$srr"
-
     sra_path="$PWD/$srr/$srr.sra"
 
     echo "Converting $srr to FASTQ..."
@@ -75,4 +72,5 @@ echo "$sample_list" | while IFS=$'\t' read -r name srr; do
     cd - > /dev/null
 done
 
+echo ""
 echo "All samples processed successfully."
