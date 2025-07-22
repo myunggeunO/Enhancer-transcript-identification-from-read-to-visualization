@@ -12,9 +12,8 @@ find MATERIAL/ATAC/rep{1,2}/02.Align -type f -name "*_filtered.bam" | while read
     mid_dir="${align_dir}/mid_${base}"
     mkdir -p "$tmp_dir" "$mid_dir"
 
-    echo
     echo "Processing $base"
-
+    
     # Name sort
     sambamba sort -t "$THREADS" -n -o "${tmp_dir}/${base}_namesorted.bam" "$bam"
 
