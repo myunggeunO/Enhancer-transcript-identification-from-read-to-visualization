@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
-
 THREADS=25
 
-# 1. Run markdup + sort for H3K27ac (for merged technical replicates)
-echo "Run markdup + sort for H3K27ac (for merged technical replicates)"
+# 1. Removing dupulicate and sorting for H3K27ac and corresponding inputs (for merged technical replicates)
+echo "Remove dupulicate & sort for H3K27ac and inputs"
 find MATERIAL/H3K27ac -path "*/tmerge/02.Align/*merge_filtered.bam" | while read bam; do
     base="${bam%.bam}"
     sambamba markdup -t $THREADS -r "$bam" "${base}_rmdup.bam"
@@ -12,8 +11,8 @@ find MATERIAL/H3K27ac -path "*/tmerge/02.Align/*merge_filtered.bam" | while read
     rm -f "${base}_rmdup.bam" "${base}_rmdup.bam.bai"
 done
 
-# 2. Run markdup + sort for all H3K4me1 _filtered.bam files
-echo "Run markdup + sort for all H3K4me1 _filtered.bam files"
+# 2. Removing dupulicate and sorting for H3K4me1 and corresponding inputs
+echo "Remove dupulicate & sort for H3K4me1 and inputs"
 find MATERIAL/H3K4me1 -type f -name "*_filtered.bam" | while read bam; do
     base="${bam%.bam}"
     sambamba markdup -t $THREADS -r "$bam" "${base}_rmdup.bam"
@@ -22,7 +21,7 @@ find MATERIAL/H3K4me1 -type f -name "*_filtered.bam" | while read bam; do
 done
 
 # 3. Sort only for GRO files (no markdup)
-echo "Sort only for GRO files"
+echo "Sorting GRO-seq reads"
 find MATERIAL/GRO -type f -name "*_filtered.bam" | while read bam; do
     base="${bam%.bam}"
     sambamba sort -t $THREADS -o "${base}.sorted.bam" "$bam"
