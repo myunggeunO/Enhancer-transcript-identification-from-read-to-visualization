@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-THREADS=25
+THREADS=5
 
 # 1. Remove dupulicate and sorting for H3K27ac and corresponding inputs (for merged technical replicates)
 echo "Remove dupulicate & sort for H3K27ac and inputs"
