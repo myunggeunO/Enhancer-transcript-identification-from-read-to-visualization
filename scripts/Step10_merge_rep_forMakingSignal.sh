@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-THREADS=16
+THREADS=5
 
-# 1. Merge ATAC replicates from *_noM_sorted.bam
+# 1. Merge ATAC replicates
 echo "Merge ATAC replicates"
 merge_dir="MATERIAL/ATAC/merge/02.Align"
 mkdir -p "$merge_dir"
@@ -17,8 +17,7 @@ fi
 
 rm -f ATAC_bams.txt
 
-
-# 2. Merge H3K4me1 ChIP replicates from *_rmdup.sorted.bam
+# 2. Merge H3K4me1 ChIP replicates
 echo "Merge H3K4me1 replicates"
 merge_dir="MATERIAL/H3K4me1/merge/02.Align"
 mkdir -p "$merge_dir"
@@ -32,7 +31,6 @@ else
 fi
 
 rm -f K4me1_bams.txt
-
 
 # 3. Merge H3K4me1 Input replicates
 echo "Merge H3K4me1 Input replicates"
