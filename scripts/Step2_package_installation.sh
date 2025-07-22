@@ -48,5 +48,5 @@ wget -q http://homer.ucsd.edu/homer/configureHomer.pl
 perl configureHomer.pl -install
 perl configureHomer.pl -install mm10 && echo "HOMER installed"
 
-echo
+echo ""
 echo "All packages installed successfully in 'bioinformatics_env'"
