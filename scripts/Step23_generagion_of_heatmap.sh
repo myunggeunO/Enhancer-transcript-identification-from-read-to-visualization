@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
-
-THREADS=20
+THREADS=5
 
 # Base directory setup
 base_dir="01.aggregation_and_heatmap"
@@ -41,5 +40,6 @@ for subset in ES_active_E_intergenic ES_E_intergenic ES_non_active_E_intergenic 
     plotHeatmap -m "$sorted_out" -out "$H3K27ac_out" --dpi 500 --sortRegions keep --refPointLabel "summit" --legendLocation best --samplesLabel "H3K27ac" --whatToShow "heatmap and colorbar" --colorList "w,#e71e15" --heatmapHeight 10 --heatmapWidth 6 --zMin 0.8 --zMax "$zMax_H3K27ac"
 
 done
+
 echo ""
 echo "Generation of heatmap done"
