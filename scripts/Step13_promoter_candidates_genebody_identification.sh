@@ -13,7 +13,7 @@ if [[ ! -f "$gtf" ]]; then
 fi
 
 # Generate promoter candidate BED: TSS ±2kb (safe with bedtools slop)
-echo "Generating M23_promoter_candidate.bed"
+echo "Generate M23_promoter_candidate.bed"
 awk -F'\t' -v OFS='\t' '$3 == "transcript" {
     match($0, /gene_id "[^"]+"/, gid); gsub(/gene_id "|"/, "", gid[0]); gene_id = gid[0];
     if ($7 == "+") {tss = $4 - 1} else if ($7 == "-") {tss = $5} else {next}
@@ -23,7 +23,7 @@ awk -F'\t' -v OFS='\t' '$3 == "transcript" {
 echo "Promoter candidate done"
 
 # Generate gene BED: full gene body from gene features
-echo "Generating M23_gene.bed"
+echo "Generate M23_gene.bed"
 awk -F'\t' -v OFS='\t' '$3 == "gene" {
     match($0, /gene_id "[^"]+"/, gid); gsub(/gene_id "|"/, "", gid[0]); gene_id = gid[0];
     print $1, $4 - 1, $5, gene_id, ".", $7
@@ -32,7 +32,7 @@ awk -F'\t' -v OFS='\t' '$3 == "gene" {
 echo "Gene body done"
 
 # Generate protein_coding gene BED
-echo "Generating M23_protein_coding_gene.bed"
+echo "Generate M23_protein_coding_gene.bed"
 awk -F'\t' -v OFS='\t' '$3 == "gene" && $0 ~ /gene_type "protein_coding"/ {
     match($0, /gene_id "[^"]+"/, gid); gsub(/gene_id "|"/, "", gid[0]); gene_id = gid[0];
     print $1, $4 - 1, $5, gene_id, ".", $7
