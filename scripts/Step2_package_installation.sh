@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # List of bioinformatics tools to be installed
 # - sra_tools
 # - trim-galore
@@ -20,8 +22,6 @@
 
 # Other:
 # - HOMER
-
-set -e
 
 # 1. Install bioinformatics tools
 mamba install -c bioconda -c conda-forge sra-tools && echo "sra-tools (fasterq-dump, prefetch) installed"
