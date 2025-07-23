@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 # List of bioinformatics tools to be installed
