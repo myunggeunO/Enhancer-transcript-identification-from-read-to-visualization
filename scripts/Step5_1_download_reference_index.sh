@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 # 1. Create reference index directory
