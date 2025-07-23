@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-#"material/annotation"
+# Define directories and files
 base_dir="material/Annotation"
 gtf="${base_dir}/gencode.vM23.annotation.gtf"
 chromsizes="${base_dir}/mm10.chrom.sizes"
@@ -12,7 +12,7 @@ if [[ ! -f "$gtf" ]]; then
     gunzip -c "$gtf.gz" > "$gtf"
 fi
 
-# Generate promoter candidate BED: TSS ±2kb (safe with bedtools slop)
+# Generate promoter candidate BED
 echo "Generate M23_promoter_candidate.bed"
 awk -F'\t' -v OFS='\t' '$3 == "transcript" {
     match($0, /gene_id "[^"]+"/, gid); gsub(/gene_id "|"/, "", gid[0]); gene_id = gid[0];
