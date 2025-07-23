@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bioinformatics tools to be installed:
+# List of bioinformatics tools to be installed
 # - sra_tools
 # - trim-galore
 # - pigz
@@ -49,4 +49,4 @@ perl configureHomer.pl -install
 perl configureHomer.pl -install mm10 && echo "HOMER installed"
 
 echo ""
-echo "All packages installed successfully in 'bioinformatics_env'"
+echo "All packages installed successfully in enhancer-env"
