@@ -32,7 +32,7 @@ for rep in rep1 rep2; do
   mkdir -p "$outdir"
 
   if [[ -f "$bam" ]]; then
-    macs3 callpeak -t "$bam" -c input -f BAM -g $GENOME --broad -n "${mark}_${rep}" --outdir "$outdir"
+    macs3 callpeak -t "$bam" -c "$input" -f BAM -g $GENOME --broad -n "${mark}_${rep}" --outdir "$outdir"
   else
     echo "[ERROR] No BAM found for $mark $rep"
   fi
