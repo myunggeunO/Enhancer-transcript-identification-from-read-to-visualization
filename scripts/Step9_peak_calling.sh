@@ -24,14 +24,15 @@ macs3 callpeak -t "$bam1" "$bam2" -f BAMPE -g $GENOME --nomodel --shift -100 --e
 
 # 3. H3K4me1 (rep1 and rep2 separately, BAMPE, broad)
 for rep in rep1 rep2; do
-  echo "$rep Call peaks for H3K4me1 $rep"
+  echo "Call peaks for H3K4me1 $rep"
   mark="H3K4me1"
   bam=$(find MATERIAL/$mark/$rep/02.Align -name "*_rmdup.sorted.bam" | head -n 1)
+  input=$(find MATERIAL/$mark/input/$rep/02.Align -name "*_rmdup.sorted.bam" | head -n 1)
   outdir="MATERIAL/$mark/peak_calling/$rep"
   mkdir -p "$outdir"
 
   if [[ -f "$bam" ]]; then
-    macs3 callpeak -t "$bam" -f BAM -g $GENOME --broad -n "${mark}_${rep}" --outdir "$outdir"
+    macs3 callpeak -t "$bam" -c input -f BAM -g $GENOME --broad -n "${mark}_${rep}" --outdir "$outdir"
   else
     echo "[ERROR] No BAM found for $mark $rep"
   fi
