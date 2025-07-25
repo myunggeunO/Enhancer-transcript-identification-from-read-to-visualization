@@ -38,28 +38,8 @@ cp "$atac_bw" "$bigwig_dir/"
 cp "$h3k27ac_bw" "$bigwig_dir/"
 cp "$h3k4me1_bw" "$bigwig_dir/"
 
-# GRO-seq processing
-## Input
+# Copy GRO-seq bam and enhancers to eRNA quantification path
 gro_bam="MATERIAL/GRO/rep1/02.Align/SRR5655667_filtered.sorted.bam"
-inter_bed="$inter_summit_src/../ES_E_intergenic.bed"
-intra_bed="$intra_summit_src/../Strand_ES_E_intragenic.bed"
-chrom_sizes="mm10.chromsizes/mm10.chrom.sizes"
-
-## Output
-inter_bam="$bigwig_dir/GRO_interE.bam"
-intra_bam="$bigwig_dir/GRO_intraE.bam"
-merged_bam="$bigwig_dir/GRO_inter_intraE.bam"
-tag_dir="$bigwig_dir/GRO_inter_intra_E"
-final_bw="$bigwig_dir/GRO_inter_intraE_signal.bw"
-
-echo "Processing GRO-seq"
-bedtools intersect -abam "$gro_bam" -b "$inter_bed" -u > "$inter_bam"
-bedtools intersect -abam "$gro_bam" -b "$intra_bed" -S -u > "$intra_bam"
-
-sambamba merge -t "$THREADS" "$merged_bam" "$inter_bam" "$intra_bam"
-
-makeTagDirectory "$tag_dir" "$merged_bam"
-makeUCSCfile "$tag_dir" -bigWig "$chrom_sizes" -style rnaseq -strand both -o "$final_bw"
 
 echo "Copy enhancer files and GRO-seq bam file to eRNA quantification path"
 cp "$inter_summit_src/../"*_active_*.bed "$erna_region_dir/inter/"
