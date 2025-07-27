@@ -9,7 +9,6 @@ bigwig_dir="$agg_dir/01.bigwig"
 bed_dir="$agg_dir/02.bed"
 matrix_dir="$agg_dir/03.Matrix"
 agg_img_dir="$agg_dir/04_1.aggregation"
-heatmap_dir="$agg_dir/04_2.heatmap"
 erna_quant_dir="$base_dir/02.eRNA_quantification"
 erna_bam_dir="$erna_quant_dir/01.bam"
 erna_region_dir="$erna_quant_dir/02.region"
@@ -17,7 +16,7 @@ erna_count_dir="$erna_quant_dir/03.count_normalized_with_RPKM"
 erna_vis_dir="$base_dir/03.eRNA_visualization"
 
 # Make path for visualization and quantification
-mkdir -p "$bigwig_dir" "$bed_dir/inter" "$bed_dir/intra" "$matrix_dir" "$agg_img_dir" "$heatmap_dir"
+mkdir -p "$bigwig_dir" "$bed_dir/inter" "$bed_dir/intra" "$matrix_dir" "$agg_img_dir"
 mkdir -p "$erna_bam_dir" "$erna_region_dir/inter" "$erna_region_dir/intra" "$erna_count_dir" "$erna_vis_dir"
 
 # Copy summit files
