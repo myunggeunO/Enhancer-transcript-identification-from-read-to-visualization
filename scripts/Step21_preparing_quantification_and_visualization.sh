@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-THREADS=5
 
 # Base directory setup
 base_dir="02.E_visualization_quantification"
