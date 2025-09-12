@@ -34,9 +34,9 @@ fi
 
 # activate env (prefer mamba if available)
 if command -v mamba >/dev/null 2>&1; then
-  mamba activate enhancer-env1
+  mamba activate enhancer-env
 else
-  conda activate enhancer-env1
+  conda activate enhancer-env
 fi
 RC
 )
