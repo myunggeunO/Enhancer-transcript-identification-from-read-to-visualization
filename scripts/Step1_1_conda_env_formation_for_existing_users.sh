@@ -21,7 +21,7 @@ fi
 ENV_NAME="enhancer-env"
 "${CREATE_CMD}" create -n "${ENV_NAME}" python=3.9 numpy pandas r-base -y
 
-# 7. Launch a new shell with the "enhancer-env1" environment activated
+# 7. Launch a new shell with the "enhancer-env" environment activated
 echo "Environment 'enhancer-env' created. Opening new shell with it activated."
 exec bash --rcfile <(cat <<'RC'
 
