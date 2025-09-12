@@ -25,4 +25,4 @@ mamba create -n enhancer-env python=3.9 numpy pandas r-base -y
 
 # 7. Launch a new shell with the "enhancer-env" environment activated
 echo "Environment 'enhancer-env' created. Opening new shell with it activated."
-exec bash --rcfile <(echo 'source ~/.bashrc && mamba activate enhancer-env')
+exec bash --rcfile <(echo 'source ~/.bashrc && conda activate enhancer-env')
