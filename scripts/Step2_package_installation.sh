@@ -35,6 +35,7 @@ mamba install -c bioconda -c conda-forge subread -y && echo "featureCounts (subr
 mamba install -c bioconda -c conda-forge samtools -y && echo "samtools installed"
 mamba install -c bioconda -c conda-forge sambamba -y && echo "sambamba installed"
 mamba install -c bioconda -c conda-forge deeptools -y && echo "deeptools installed"
+mamba install -c bioconda -c conda-forge ucsc-bedgraphtobigwig -y && echo "bigWigbuilder (bedgraphtobigwig) installed"
 
 # 2. Install R packages
 mamba install -c conda-forge r-tidyverse -y && echo "r-tidyverse installed"
