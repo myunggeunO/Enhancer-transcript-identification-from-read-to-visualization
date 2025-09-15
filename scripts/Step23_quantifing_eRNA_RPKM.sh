@@ -29,7 +29,7 @@ fi
 echo "Run featureCounts to count mapped reads of $name"
 counts="${out_dir}/${name}_counts.txt"
 rpkm_out="${out_dir}/${name}_RPKM.txt"
-featureCounts -a "$gtf" -o "$counts" -T "$THREADS" -s "$strand" -t enhancer -g gene_id -O --fraction --read2pos 5 "$bam"
+featureCounts -a "$gtf" -o "$counts" -T "$THREADS" -s "$strand" -t enhancer -g gene_id -O --fraction "$bam"
 
 # 4. Calculte RPKM of enhancer mapped reads
 awk -v total="$total" 'BEGIN{OFS="\t"} NR>2 {
