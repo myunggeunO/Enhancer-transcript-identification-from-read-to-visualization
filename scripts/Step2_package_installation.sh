@@ -24,6 +24,7 @@ fi
 # - samtools
 # - sambamba
 # - deeptools
+# - ucsc-bedgraphtobigwig
 
 # R packages:
 # - r-tidyverse
